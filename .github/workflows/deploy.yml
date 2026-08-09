@@ -30,5 +30,5 @@ jobs:
           server: ${{ secrets.HOSTINGER_SFTP_HOST }}
           username: ${{ secrets.HOSTINGER_SFTP_USER }}
           password: ${{ secrets.HOSTINGER_SFTP_PASS }}
-          logical-path: out/
+          local-dir: out/
           server-dir: /public_html/

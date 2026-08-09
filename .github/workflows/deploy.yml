@@ -24,13 +24,11 @@ jobs:
       - name: Build static site
         run: npm run build
 
-      - name: Deploy out/ to public_html via SFTP
-        uses: appleboy/scp-action@v1.0.0
+      - name: Deploy out/ to public_html via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
         with:
-          host: ${{ secrets.HOSTINGER_SFTP_HOST }}
+          server: ${{ secrets.HOSTINGER_SFTP_HOST }}
           username: ${{ secrets.HOSTINGER_SFTP_USER }}
           password: ${{ secrets.HOSTINGER_SFTP_PASS }}
-          port: 22
-          source: 'out/*'
-          target: '/public_html'
-          strip_components: 1
+          logical-path: out/
+          server-dir: /public_html/

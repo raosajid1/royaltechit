@@ -30,5 +30,9 @@ jobs:
           server: ${{ secrets.HOSTINGER_SFTP_HOST }}
           username: ${{ secrets.HOSTINGER_SFTP_USER }}
           password: ${{ secrets.HOSTINGER_SFTP_PASS }}
+          protocol: ftps
+          port: 21
+          security: loose
+          timeout: 120000
           local-dir: out/
           server-dir: /public_html/

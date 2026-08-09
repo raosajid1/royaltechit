@@ -25,11 +25,12 @@ jobs:
         run: npm run build
 
       - name: Deploy out/ to public_html via SFTP
-        uses: wburningham/sftp-deploy@v1.0.0
+        uses: appleboy/scp-action@v0.1.8
         with:
           host: ${{ secrets.HOSTINGER_SFTP_HOST }}
-          user: ${{ secrets.HOSTINGER_SFTP_USER }}
+          username: ${{ secrets.HOSTINGER_SFTP_USER }}
           password: ${{ secrets.HOSTINGER_SFTP_PASS }}
           port: 22
-          localDir: 'out'
-          remoteDir: '/public_html'
+          source: 'out/*'
+          target: '/public_html'
+          strip_components: 1
